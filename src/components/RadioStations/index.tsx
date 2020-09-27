@@ -12,7 +12,7 @@ const RadioStations: React.FC<Props> = ({ names, numbers }) => (
 			<div className={styles.StationsContainer}>
 				{names.map((name, i) => (
 					<div className={styles.Station}>
-						<div className={styles.name}>{name}</div>
+						{name}
 						<div className={styles.number}>{numbers[i]}</div>
 					</div>
 				))}
