@@ -20,12 +20,18 @@
 	cursor: pointer;
 	display: flex;
 	justify-content: space-between;
-	margin: 15px;
-	padding-bottom: 10px;
-	border-bottom: solid 2px var(--color-items-separator);
+
+	margin: 0 15px;
+	width: calc(var(--width-component) - 15px * 2);
+	padding: 15px 0 8px 0;
 
 	font-size: var(--text-size);
 	color: var(--color-text);
+
+	background-color: transparent;
+	outline: none;
+	border: none;
+	border-bottom: solid 2px var(--color-items-separator);
 }
 
 .number {
