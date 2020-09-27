@@ -1,0 +1,14 @@
+@import './css-variables.scss';
+
+body {
+	margin: 0;
+	font-family: 'Helvetica', 'Arial', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: var(--color-background);
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
+}

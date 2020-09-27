@@ -1,0 +1,28 @@
+.Container {
+	height: 300px;
+	width: var(--width-component);
+	background-color: var(--color-body-background);
+}
+
+.StationsContainer {
+	margin-top: 15px;
+	display: inline-block;
+	width: 100%;
+}
+
+.Station {
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	margin: 15px;
+	padding-bottom: 10px;
+	border-bottom: solid 2px var(--color-items-separator);
+	color: var(--color-text);
+}
+
+.name {
+}
+
+.number {
+	font-weight: bold;
+}
