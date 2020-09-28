@@ -7,7 +7,12 @@ import DisplayStation from './DisplayStation/DisplayStation';
 
 // interface for props
 interface Props {
-	stations: { key: number; name: string; number: number; image: string }[];
+	stations: {
+		key: number;
+		name: string;
+		frequency: number;
+		coverImage: string;
+	}[];
 	onChange: (e: string[]) => void;
 }
 

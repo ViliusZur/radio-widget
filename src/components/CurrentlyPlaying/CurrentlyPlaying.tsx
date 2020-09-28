@@ -3,7 +3,7 @@ import styles from './currentlyPlaying.module.scss';
 
 // interface for props
 interface Props {
-	station: { name: string; number: number } | null;
+	station: { name: string } | null;
 }
 
 // displays a selected station in the footer area of the widget

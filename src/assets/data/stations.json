@@ -1,0 +1,64 @@
+{
+	"stations": [
+		{
+			"key": 1,
+			"name": "Rock FM",
+			"frequency": 106.5,
+			"coverImage": "/stations/one.jpg"
+		},
+		{
+			"key": 2,
+			"name": "Pop All Day",
+			"frequency": 98,
+			"coverImage": "/stations/two.jpg"
+		},
+		{
+			"key": 3,
+			"name": "HipHop Radio",
+			"frequency": 99.3,
+			"coverImage": "/stations/three.jpg"
+		},
+		{
+			"key": 4,
+			"name": "Reggie Beats 24/7",
+			"frequency": 102.2,
+			"coverImage": "/stations/four.jpg"
+		},
+		{
+			"key": 5,
+			"name": "Classical Music",
+			"frequency": 105.4,
+			"coverImage": "/stations/five.jpg"
+		},
+		{
+			"key": 6,
+			"name": "Dribble Yo",
+			"frequency": 89.4,
+			"coverImage": "/stations/six.jpg"
+		},
+		{
+			"key": 7,
+			"name": "News Station 4",
+			"frequency": 88.5,
+			"coverImage": "/stations/seven.jpg"
+		},
+		{
+			"key": 8,
+			"name": "Sicko Mode",
+			"frequency": 95.7,
+			"coverImage": "/stations/eight.jpg"
+		},
+		{
+			"key": 9,
+			"name": "INNIT",
+			"frequency": 96.8,
+			"coverImage": "/stations/nine.jpg"
+		},
+		{
+			"key": 10,
+			"name": "FAM",
+			"frequency": 103.3,
+			"coverImage": "/stations/ten.jpg"
+		}
+	]
+}

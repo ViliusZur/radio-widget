@@ -1,8 +1,9 @@
 import React from 'react';
+import styles from './radioWidget.module.scss';
+import data from '../../assets/data/stations.json';
 
 // import components
-import styles from './radioWidget.module.scss';
-import TopBar from '../TitleBar/TitleBar';
+import TitleBar from '../TitleBar/TitleBar';
 import RadioStations from '../RadioStations/RadioStations';
 import CurrentlyPlaying from '../CurrentlyPlaying/CurrentlyPlaying';
 
@@ -10,25 +11,69 @@ import CurrentlyPlaying from '../CurrentlyPlaying/CurrentlyPlaying';
 interface Station {
 	key: number;
 	name: string;
-	number: number;
-	image: string;
+	frequency: number;
+	coverImage: string;
 }
 interface MyState {
 	selectedStation: Station | null;
 }
 
+let stations: Station[] = [...data.stations];
+console.log('stations', stations);
+
+/*
 // list of stations. CHANGE TO JSON
 const stations: Station[] = [
-	{ key: 1, name: 'Station One', number: 96.3, image: '/stations/one.jpg' },
-	{ key: 2, name: 'Station Two', number: 98, image: '/stations/two.jpg' },
-	{ key: 3, name: 'Station Three', number: 89.5, image: '/stations/three.jpg' },
-	{ key: 4, name: 'Station Four', number: 100.2, image: '/stations/four.jpg' },
-	{ key: 5, name: 'Station Five', number: 112.5, image: '/stations/one.jpg' },
-	{ key: 6, name: 'Station Six', number: 95.2, image: '/stations/two.jpg' },
-	{ key: 7, name: 'Station Seven', number: 87.8, image: '/stations/three.jpg' },
-	{ key: 8, name: 'Station Eight', number: 99.8, image: '/stations/four.jpg' },
+	{
+		key: 1,
+		name: 'Station One',
+		frequency: 96.3,
+		coverImage: '/stations/one.jpg',
+	},
+	{
+		key: 2,
+		name: 'Station Two',
+		frequency: 98,
+		coverImage: '/stations/two.jpg',
+	},
+	{
+		key: 3,
+		name: 'Station Three',
+		frequency: 89.5,
+		coverImage: '/stations/three.jpg',
+	},
+	{
+		key: 4,
+		name: 'Station Four',
+		frequency: 100.2,
+		coverImage: '/stations/four.jpg',
+	},
+	{
+		key: 5,
+		name: 'Station Five',
+		frequency: 112.5,
+		coverImage: '/stations/one.jpg',
+	},
+	{
+		key: 6,
+		name: 'Station Six',
+		frequency: 95.2,
+		coverImage: '/stations/two.jpg',
+	},
+	{
+		key: 7,
+		name: 'Station Seven',
+		frequency: 87.8,
+		coverImage: '/stations/three.jpg',
+	},
+	{
+		key: 8,
+		name: 'Station Eight',
+		frequency: 99.8,
+		coverImage: '/stations/four.jpg',
+	},
 ];
-
+*/
 // radio widget is the main component, it holds the state of the widget.
 export default class RadioWidget extends React.Component {
 	state: MyState = {
@@ -50,7 +95,7 @@ export default class RadioWidget extends React.Component {
 		return (
 			<>
 				<div className={styles.Container}>
-					<TopBar />
+					<TitleBar />
 					<RadioStations stations={stations} onChange={this.selectStation} />
 					<CurrentlyPlaying station={this.state.selectedStation} />
 				</div>
