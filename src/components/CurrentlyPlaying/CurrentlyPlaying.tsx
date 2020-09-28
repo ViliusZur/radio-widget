@@ -3,24 +3,26 @@ import styles from './currentlyPlaying.module.scss';
 
 // interface for props
 interface Props {
-	name: string | null;
+	station: { name: string; number: number } | null;
 }
 
-const CurrentlyPlaying: React.FC<Props> = ({ name }) => {
-	if (!name) {
-		return <div className={styles.Container} />;
-	} else {
-		// display the name of the station if it is selected
+// displays a selected station in the footer area of the widget
+const CurrentlyPlaying: React.FC<Props> = ({ station }) => {
+	if (station) {
+		// display the name of the selected station
 		return (
 			<>
 				<div className={styles.Container}>
 					<div className={styles.Text}>
 						<div className={styles.currentlyPlaying}>currently playing </div>
-						<div className={styles.name}>{name}</div>
+						<div className={styles.name}>{station.name}</div>
 					</div>
 				</div>
 			</>
 		);
+	} else {
+		// don't display a station if nothing is selected
+		return <div className={styles.Container} />;
 	}
 };
 
