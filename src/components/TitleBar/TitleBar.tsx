@@ -9,19 +9,19 @@ import switchButton from '../../assets/icons/switch.webp';
 // it is a static component
 
 const TopBar: React.FC = () => (
-	<>
-		<div className={styles.Container}>
-			<div className={styles.Items}>
-				<button className={styles.Invisible}>
-					<img className={styles.Buttons} src={backArrow} alt="back-arrow" />
-				</button>
-				<div className={styles.Text}>stations</div>
-				<button className={styles.Invisible}>
-					<img className={styles.Buttons} src={switchButton} alt="switch" />
-				</button>
-			</div>
-		</div>
-	</>
+  <div data-testid="titleBar" className={styles.Container}>
+    <div data-testid="items" className={styles.Items}>
+      <button data-testid="backBtn" className={styles.Invisible}>
+        <img data-testid="backArrow" className={styles.Buttons} src={backArrow} alt="back-arrow" />
+      </button>
+      <div data-testid="title" className={styles.Text}>
+        stations
+      </div>
+      <button data-testid="switchBtn" className={styles.Invisible}>
+        <img data-testid="switch" className={styles.Buttons} src={switchButton} alt="switch" />
+      </button>
+    </div>
+  </div>
 );
 
 export default TopBar;
