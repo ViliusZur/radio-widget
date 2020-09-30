@@ -42,6 +42,8 @@ export default class RadioWidget extends React.Component<PropsType, StateType> {
   };
 
   render() {
+    const allStations = this.props.stations;
+    const station = this.state.selectedStation;
     return (
       <div>
         <div data-testid="titleBar" className={styles.TitleContainer}>
@@ -51,14 +53,14 @@ export default class RadioWidget extends React.Component<PropsType, StateType> {
             <IconButton src={switchButton} alt="switch" />
           </div>
         </div>
-        <Stations stations={this.props.stations} onChange={this.selectStation} />
+        <Stations stations={allStations} onChange={this.selectStation} />
         <div data-testid="currentlyPlaying" className={styles.CurrentlyPlaying}>
-          {this.state.selectedStation && (
+          {station && (
             <>
               <div data-testid="currentlyPlayingText" className={styles.currentlyPlaying}>
                 currently playing
               </div>
-              {this.state.selectedStation.name}
+              {station.name}
             </>
           )}
         </div>
