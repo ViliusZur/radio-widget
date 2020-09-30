@@ -35,6 +35,6 @@ The app will be located at: `localhost:3000`
 
 Test coverage analysis will be available in your Terminal. If you wish to see it in an html format and inspect it deeper - head over to `<root>/coverage/lcov_report/index.html`
 
-### Test analysis
+### Test analysis:
 
 ![Alt text](./test_analysis.png?raw=true "Test Analysis")
