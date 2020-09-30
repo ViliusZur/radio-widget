@@ -1,9 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
+import Radio from '../components/Radio/Radio';
 
-import RadioWidget from '../components/RadioWidget/RadioWidget';
-
-// interfaces
 interface Station {
   key: number;
   name: string;
@@ -15,34 +13,32 @@ interface Props {
 }
 
 // render helper function to handle props overriding
-function renderRadioWidget(props: Partial<Props> = {}) {
+function renderRadio(props: Partial<Props> = {}) {
   const defaultProps: Props = { stations: undefined };
-  return render(<RadioWidget {...defaultProps} {...props} />);
+  return render(<Radio {...defaultProps} {...props} />);
 }
 
-describe('RadioWidget', () => {
+describe('Radio', () => {
   //test
-  test('all components render', async () => {
+  test('all main elements and components render', async () => {
     // render the component
-    const { findByTestId } = renderRadioWidget();
+    const { findByTestId } = renderRadio();
 
     // get elements
-    const widget = await findByTestId('widget');
     const titleBar = await findByTestId('titleBar');
-    const radioStations = await findByTestId('radioStations');
+    const stations = await findByTestId('stations');
     const currentlyPlaying = await findByTestId('currentlyPlaying');
 
     // perform assertions
-    expect(widget).toBeInTheDocument();
-    expect(widget).toContainElement(titleBar);
-    expect(widget).toContainElement(radioStations);
-    expect(widget).toContainElement(currentlyPlaying);
+    expect(titleBar).toBeInTheDocument();
+    expect(stations).toBeInTheDocument();
+    expect(currentlyPlaying).toBeInTheDocument();
   });
 
   //test
-  test('widget renders stations', async () => {
+  test(' renders stations', async () => {
     // render the component
-    const { findByTestId } = renderRadioWidget({
+    const { findByTestId } = renderRadio({
       stations: [
         { key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' },
         { key: 2, name: 'station2', frequency: 2, coverImage: 'pathToImage' },
@@ -69,7 +65,7 @@ describe('RadioWidget', () => {
   //test
   test('currently playing appears when selected a station', async () => {
     // render the component
-    const { findByTestId } = renderRadioWidget({
+    const { findByTestId } = renderRadio({
       stations: [{ key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' }],
     });
 
@@ -86,7 +82,7 @@ describe('RadioWidget', () => {
   //test
   test('currently playing changes when changing a station', async () => {
     // render the component
-    const { findByTestId } = renderRadioWidget({
+    const { findByTestId } = renderRadio({
       stations: [
         { key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' },
         { key: 2, name: 'station2', frequency: 2, coverImage: 'pathToImage' },
@@ -114,7 +110,7 @@ describe('RadioWidget', () => {
   // test
   test('station should not be expanded when not selected', async () => {
     // render the component
-    const { findByTestId } = renderRadioWidget({
+    const { findByTestId } = renderRadio({
       stations: [{ key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' }],
     });
 
@@ -128,7 +124,7 @@ describe('RadioWidget', () => {
   // test
   test('station should be expanded when selected', async () => {
     // render the component
-    const { findByTestId } = renderRadioWidget({
+    const { findByTestId } = renderRadio({
       stations: [{ key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' }],
     });
 

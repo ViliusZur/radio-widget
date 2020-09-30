@@ -1,9 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import CurrentlyPlaying from '../components/CurrentlyPlaying/CurrentlyPlaying';
+import CurrentlyPlaying from '../components/Radio/CurrentlyPlaying/CurrentlyPlaying';
 
-// interfaces
 interface Station {
   name: string;
 }
@@ -18,7 +17,6 @@ function renderCurrentlyPlaying(props: Partial<Props> = {}) {
 }
 
 describe('CurrentlyPlaying', () => {
-  //test
   test('should display nothing when no station is passed as prop', async () => {
     // render the component
     const { queryByTestId } = renderCurrentlyPlaying();
@@ -34,7 +32,6 @@ describe('CurrentlyPlaying', () => {
     expect(stationName).not.toBeInTheDocument();
   });
 
-  //test
   test('container should contain "CURRENTLY PLAYING" and station name when station is passed as a prop', async () => {
     // render the component
     const { findByTestId } = renderCurrentlyPlaying({ station: { name: 'M-1 Plius' } });

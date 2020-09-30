@@ -1,0 +1,47 @@
+.CurrentlyPlaying {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  width: var(--width-component);
+  height: 60px;
+
+  background-color: var(--color-footer-background);
+  border-top: solid 2px var(--color-components-separator);
+  border-radius: 0 0 25px 25px;
+  box-shadow: 0 30px 15px -10px #14141a;
+
+  font-size: var(--text-size);
+  color: var(--color-text);
+}
+
+.currentlyPlaying {
+  text-transform: uppercase;
+  font-size: var(--text-size-s);
+  color: var(--color-footer-text);
+}
+
+.TitleContainer {
+  height: 60px;
+
+  border-radius: 25px 25px 0 0;
+  background-color: var(--color-header-background);
+}
+
+.Items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 0 15px;
+  height: inherit;
+
+  cursor: default;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-header-text);
+  font-size: var(--text-size);
+  font-weight: bold;
+}

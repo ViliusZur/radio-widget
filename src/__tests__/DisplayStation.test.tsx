@@ -1,9 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import DisplayStation from '../components/Radio/Stations/DisplayStation/DisplayStation';
 
-import DisplayStation from '../components/RadioStations/DisplayStation/DisplayStation';
-
-// interfaces
 interface Station {
   key: number;
   name: string;
@@ -21,7 +19,6 @@ function renderDisplayStation(props: Partial<Props> = {}) {
 }
 
 describe('DisplayStation', () => {
-  //test
   test('nothing should return if null is passed as prop', async () => {
     // render the component
     const { queryByTestId } = renderDisplayStation();
@@ -34,7 +31,6 @@ describe('DisplayStation', () => {
     expect(station1).not.toBeInTheDocument();
   });
 
-  //test
   test('parent div should be displayed when passing station as a prop', async () => {
     // render the component
     const { queryByTestId } = renderDisplayStation();

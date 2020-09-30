@@ -4,7 +4,6 @@
   justify-content: space-between;
 
   margin: 0 15px;
-  width: calc(var(--width-component) - 15px * 2);
   padding: 12px 0 10px 0;
 
   font-size: var(--text-size);
@@ -20,10 +19,8 @@
   font-weight: bold;
 }
 
-.Child:last-child {
-  .Station {
-    border-bottom: 0;
-  }
+.Child:last-child .Station {
+  border-bottom: 0;
 }
 
 .AccordionPanel {

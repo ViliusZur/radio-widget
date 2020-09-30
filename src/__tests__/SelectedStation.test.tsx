@@ -1,9 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import SelectedStation from '../components/Radio/Stations/SelectedStation/SelectedStation';
 
-import SelectedStation from '../components/RadioStations/SelectedStation/SelectedStation';
-
-// interfaces
 interface Station {
   name: string;
   coverImage: string;
@@ -19,7 +17,6 @@ function renderSelectedStation(props: Partial<Props> = {}) {
 }
 
 describe('SelectedStation', () => {
-  //test
   test('nothing should be displayed if null is passed as a prop', async () => {
     // render the component
     const { queryByTestId } = renderSelectedStation();
@@ -31,7 +28,6 @@ describe('SelectedStation', () => {
     expect(selectedStation).not.toBeInTheDocument();
   });
 
-  //test
   test('minus, plus buttons, and station image is displayed when station is passed as a prop', async () => {
     // render the component
     const { findByTestId } = renderSelectedStation({
@@ -49,7 +45,6 @@ describe('SelectedStation', () => {
     expect(plus).toBeInTheDocument();
   });
 
-  //test
   test('elements are rendered correctly when station is passed as a prop', async () => {
     // render the component
     const { findByTestId } = renderSelectedStation({

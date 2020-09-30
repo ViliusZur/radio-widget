@@ -1,0 +1,15 @@
+.Invisible {
+  width: auto;
+  height: var(--button-size);
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline-color: gray;
+  background-color: transparent;
+}
+
+.Image {
+  max-width: var(--button-size);
+  max-height: var(--button-size);
+  cursor: pointer;
+}

@@ -1,0 +1,17 @@
+.Items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 120px;
+  padding-top: 10px;
+  margin: 0 15px;
+}
+
+.StationImage {
+  max-width: 100px;
+  max-height: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: solid 3px var(--color-text);
+}

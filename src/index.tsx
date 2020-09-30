@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
 import './styles/index.scss';
-import data from './assets/data/stations.json';
-import RadioWidget from './components/RadioWidget/RadioWidget';
+import retrieveData from './lib/retrieveData';
+import Radio from './components/Radio/Radio';
 
-// interfaces
 interface Station {
   key: number;
   name: string;
@@ -14,18 +13,18 @@ interface Station {
   coverImage: string;
 }
 
-// get stations from imported data
-let stations: Station[] = [...data.stations];
+// get stations
+let stations: Station[] = retrieveData();
 
 // radio widget is the main component, it collects all other components
 // it is wrapped in a div "Centered" so it would be in the center of the screen
 ReactDOM.render(
   <React.StrictMode>
     <div className="Centered">
-      <RadioWidget stations={undefined} />
+      <Radio stations={stations} />
     </div>
   </React.StrictMode>,
   document.getElementById('root')
 );
 
-serviceWorker.unregister();
+serviceWorker.register();

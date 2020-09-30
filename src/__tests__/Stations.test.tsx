@@ -1,9 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import RadioStations from '../components/Radio/Stations/Stations';
 
-import RadioStations from '../components/RadioStations/RadioStations';
-
-// interfaces
 interface Station {
   key: number;
   name: string;
@@ -22,7 +20,6 @@ function renderRadioStations(props: Partial<Props> = {}) {
 }
 
 describe('RadioStations', () => {
-  //test
   test('Accordion and stationsContainer elements should not be displayed when passed no stations as props', async () => {
     // render the component
     const { findByTestId, queryByTestId } = renderRadioStations();
@@ -38,7 +35,6 @@ describe('RadioStations', () => {
     expect(accordion).not.toBeInTheDocument();
   });
 
-  //test
   test('should display an Accordion and stationsContainer elements inside container div when passed station as prop', async () => {
     // render the component
     const { findByTestId } = renderRadioStations({
@@ -56,7 +52,6 @@ describe('RadioStations', () => {
     expect(stationsContainer).toContainElement(accordion);
   });
 
-  //test
   test('should display no stations when none are passed as props', async () => {
     // render the component
     const { queryByTestId } = renderRadioStations();
@@ -72,7 +67,6 @@ describe('RadioStations', () => {
     expect(station3).not.toBeInTheDocument();
   });
 
-  //test
   test('should display 3 stations with names "station1", "station2", "Station3" when passed as props', async () => {
     // render the component
     const { findByTestId } = renderRadioStations({
@@ -134,7 +128,6 @@ describe('RadioStations', () => {
     expect(station6).toHaveTextContent('station6');
   });
 
-  //test
   test('AccordionButton with name and frequency, and AccordionPanel with station should be displayed inside AccordionItem when station is passed as prop', async () => {
     // render the component
     const { findByTestId } = renderRadioStations({

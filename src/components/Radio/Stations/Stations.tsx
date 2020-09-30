@@ -1,11 +1,8 @@
 import React from 'react';
 import { Accordion } from 'react-accessible-accordion';
-import styles from './radioStations.module.scss';
-
-// import components
+import styles from './stations.module.css';
 import DisplayStation from './DisplayStation/DisplayStation';
 
-// interfaces
 interface Station {
   key: number;
   name: string;
@@ -23,8 +20,8 @@ const RadioStations: React.FC<Props> = ({ stations, onChange }) => {
   if (stations) {
     // display stations
     return (
-      <div data-testid="radioStations" className={styles.Container}>
-        <div data-testid="stationsContainer" className={styles.StationsContainer}>
+      <div data-testid="stations" className={styles.Container}>
+        <div data-testid="stationsContainer" className={styles.Stations}>
           <Accordion data-testid="accordion" allowZeroExpanded onChange={(e) => onChange(e)}>
             {stations.map((station) => (
               <DisplayStation key={station.key} station={station} />
