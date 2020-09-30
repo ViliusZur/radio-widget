@@ -13,14 +13,11 @@ interface Station {
   coverImage: string;
 }
 
-// get stations
-let stations: Station[] = retrieveData();
+const stations: Station[] = retrieveData(); // get stations
 
-// radio widget is the main component, it collects all other components
-// it is wrapped in a div "Centered" so it would be in the center of the screen
 ReactDOM.render(
   <React.StrictMode>
-    <div className="Centered">
+    <div className='Centered'>
       <Radio stations={stations} />
     </div>
   </React.StrictMode>,

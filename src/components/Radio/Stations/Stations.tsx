@@ -14,14 +14,19 @@ interface Props {
   onChange: (e: string[]) => void;
 }
 
-// radio stations displays the stations received from parent component (radio widget)
+// stations displays the stations received from parent component (radio).
 // name of the Accordion package "react-accessible-accordion"
 const Stations: React.FC<Props> = ({ stations, onChange }) => (
-  <div data-testid="stations" className={styles.Container}>
-    <div data-testid="stationsContainer" className={styles.Stations}>
-      <Accordion data-testid="accordion" allowZeroExpanded onChange={(e) => onChange(e)}>
+  <div data-testid='stations' className={styles.Container}>
+    <div data-testid='stationsContainer' className={styles.Stations}>
+      <Accordion
+        data-testid='accordion'
+        allowZeroExpanded
+        onChange={(e) => onChange(e)}>
         {stations &&
-          stations.map((station) => <DisplayStation key={station.key} station={station} />)}
+          stations.map((station) => (
+            <DisplayStation key={station.key} station={station} />
+          ))}
       </Accordion>
     </div>
   </div>

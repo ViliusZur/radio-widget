@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './radio.module.css';
 import backArrow from '../../assets/icons/back-arrow.webp';
 import switchButton from '../../assets/icons/switch.webp';
-import IconButton from '../Common/IconButton/IconButton';
+import IconButton from '../IconButton/IconButton';
 import Stations from './Stations/Stations';
 
 interface Station {
@@ -29,17 +29,19 @@ const Radio: React.FC<Props> = ({ stations }) => {
 
   return (
     <div>
-      <div data-testid="titleBar" className={styles.TitleContainer}>
+      <div data-testid='titleBar' className={styles.TitleContainer}>
         <div className={styles.Items}>
-          <IconButton testid="back-arrow" src={backArrow} alt="back-arrow" />
+          <IconButton testid='back-arrow' src={backArrow} alt='back-arrow' />
           stations
-          <IconButton testid="switch" src={switchButton} alt="switch" />
+          <IconButton testid='switch' src={switchButton} alt='switch' />
         </div>
       </div>
       <Stations stations={stations} onChange={selectStation} />
-      <div data-testid="currentlyPlaying" className={styles.CurrentlyPlaying}>
+      <div data-testid='currentlyPlaying' className={styles.CurrentlyPlaying}>
         {selectedStation && selectedStation.name && (
-          <div data-testid="currentlyPlayingText" className={styles.currentlyPlaying}>
+          <div
+            data-testid='currentlyPlayingText'
+            className={styles.currentlyPlaying}>
             <span>currently playing</span> {selectedStation.name}
           </div>
         )}

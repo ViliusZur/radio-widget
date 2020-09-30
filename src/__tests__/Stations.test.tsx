@@ -38,7 +38,9 @@ describe('Stations', () => {
   test('should display an Accordion and stationsContainer elements inside container div when passed station as prop', async () => {
     // render the component
     const { findByTestId } = renderRadioStations({
-      stations: [{ key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' }],
+      stations: [
+        { key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' },
+      ],
     });
 
     // get elements
@@ -131,7 +133,9 @@ describe('Stations', () => {
   test('AccordionButton with name and frequency, and AccordionPanel with station should be displayed inside AccordionItem when station is passed as prop', async () => {
     // render the component
     const { findByTestId } = renderRadioStations({
-      stations: [{ key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' }],
+      stations: [
+        { key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' },
+      ],
     });
 
     // get elements

@@ -91,17 +91,23 @@ describe('Radio', () => {
   test('currently playing appears when selected a station', async () => {
     // render the component
     const { findByTestId } = renderRadio({
-      stations: [{ key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' }],
+      stations: [
+        { key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' },
+      ],
     });
 
     // get elements
     const station = await findByTestId('accordionBtn-1');
     fireEvent.click(station); // perform an event
-    const currentlyPlayingStationName = await findByTestId('currentlyPlayingText');
+    const currentlyPlayingStationName = await findByTestId(
+      'currentlyPlayingText'
+    );
 
     // perform assertions
     expect(currentlyPlayingStationName).toBeInTheDocument();
-    expect(currentlyPlayingStationName).toHaveTextContent('currently playing station1');
+    expect(currentlyPlayingStationName).toHaveTextContent(
+      'currently playing station1'
+    );
   });
 
   test('currently playing changes when changing a station', async () => {
@@ -116,11 +122,15 @@ describe('Radio', () => {
     // get elements
     let station = await findByTestId('accordionBtn-1');
     fireEvent.click(station); // perform an event
-    const currentlyPlayingStationName = await findByTestId('currentlyPlayingText');
+    const currentlyPlayingStationName = await findByTestId(
+      'currentlyPlayingText'
+    );
 
     // perform assertions
     expect(currentlyPlayingStationName).toBeInTheDocument();
-    expect(currentlyPlayingStationName).toHaveTextContent('currently playing station1');
+    expect(currentlyPlayingStationName).toHaveTextContent(
+      'currently playing station1'
+    );
 
     // get elements
     station = await findByTestId('accordionBtn-2');
@@ -128,14 +138,18 @@ describe('Radio', () => {
 
     // perform assertions
     expect(currentlyPlayingStationName).toBeInTheDocument();
-    expect(currentlyPlayingStationName).toHaveTextContent('currently playing station2');
+    expect(currentlyPlayingStationName).toHaveTextContent(
+      'currently playing station2'
+    );
   });
 
   // test
   test('station should not be expanded when not selected', async () => {
     // render the component
     const { findByTestId } = renderRadio({
-      stations: [{ key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' }],
+      stations: [
+        { key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' },
+      ],
     });
 
     // get elements
@@ -149,7 +163,9 @@ describe('Radio', () => {
   test('station should be expanded when selected', async () => {
     // render the component
     const { findByTestId } = renderRadio({
-      stations: [{ key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' }],
+      stations: [
+        { key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' },
+      ],
     });
 
     // get elements
@@ -163,7 +179,9 @@ describe('Radio', () => {
   test('minus, plus buttons, and station image is displayed when station is passed as a prop and selected', async () => {
     // render the component
     const { findByTestId } = renderRadio({
-      stations: [{ key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' }],
+      stations: [
+        { key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' },
+      ],
     });
 
     // get elements
