@@ -17,7 +17,8 @@
   color: var(--color-text);
 }
 
-.currentlyPlaying {
+.currentlyPlaying span {
+  display: block;
   text-transform: uppercase;
   font-size: var(--text-size-s);
   color: var(--color-footer-text);
