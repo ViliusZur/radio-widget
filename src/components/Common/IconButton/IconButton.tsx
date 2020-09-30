@@ -2,13 +2,14 @@ import React from 'react';
 import styles from './iconButton.module.css';
 
 interface Props {
+  testid: string;
   src: string;
   alt: string;
 }
 
-const IconButton: React.FC<Props> = ({ src, alt }) => (
+const IconButton: React.FC<Props> = ({ testid, src, alt }) => (
   <button className={styles.Invisible}>
-    <img src={src} alt={alt} className={styles.Image} />
+    <img data-testid={testid} src={src} alt={alt} className={styles.Image} />
   </button>
 );
 

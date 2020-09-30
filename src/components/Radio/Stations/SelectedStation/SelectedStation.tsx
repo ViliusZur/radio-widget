@@ -9,19 +9,17 @@ interface Props {
 }
 
 // displays buttons and an image for an expanded selected station
-const SelectedStation: React.FC<Props> = ({ station }) => {
-  return (
-    <div data-testid="selectedStation" className={styles.Items}>
-      <IconButton src={minus} alt="minus" />
-      <img
-        data-testid="stationImage"
-        className={styles.StationImage}
-        src={station.coverImage}
-        alt={station.name}
-      />
-      <IconButton src={plus} alt="plus" />
-    </div>
-  );
-};
+const SelectedStation: React.FC<Props> = ({ station }) => (
+  <div data-testid="selectedStation" className={styles.Items}>
+    <IconButton testid="minus" src={minus} alt="minus" />
+    <img
+      data-testid="stationImage"
+      className={styles.StationImage}
+      src={station.coverImage}
+      alt={station.name}
+    />
+    <IconButton testid="plus" src={plus} alt="plus" />
+  </div>
+);
 
 export default SelectedStation;

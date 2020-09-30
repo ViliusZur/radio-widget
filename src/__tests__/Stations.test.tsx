@@ -19,20 +19,20 @@ function renderRadioStations(props: Partial<Props> = {}) {
   return render(<RadioStations {...defaultProps} {...props} />);
 }
 
-describe('RadioStations', () => {
-  test('Accordion and stationsContainer elements should not be displayed when passed no stations as props', async () => {
+describe('Stations', () => {
+  test('Accordion and stationsContainer elements should be in the document', async () => {
     // render the component
     const { findByTestId, queryByTestId } = renderRadioStations();
 
     // get elements
-    const radioStations = await findByTestId('radioStations');
+    const radioStations = await findByTestId('stations');
     const stationsContainer = queryByTestId('stationsContainer');
     const accordion = queryByTestId('accordion');
 
     // perform assertions
     expect(radioStations).toBeInTheDocument();
-    expect(stationsContainer).not.toBeInTheDocument();
-    expect(accordion).not.toBeInTheDocument();
+    expect(stationsContainer).toBeInTheDocument();
+    expect(accordion).toBeInTheDocument();
   });
 
   test('should display an Accordion and stationsContainer elements inside container div when passed station as prop', async () => {
@@ -42,7 +42,7 @@ describe('RadioStations', () => {
     });
 
     // get elements
-    const radioStations = await findByTestId('radioStations');
+    const radioStations = await findByTestId('stations');
     const stationsContainer = await findByTestId('stationsContainer');
     const accordion = await findByTestId('accordion');
 
@@ -57,9 +57,9 @@ describe('RadioStations', () => {
     const { queryByTestId } = renderRadioStations();
 
     // get elements
-    const station1 = queryByTestId('station-1');
-    const station2 = queryByTestId('station-2');
-    const station3 = queryByTestId('station-3');
+    const station1 = queryByTestId('accordionItem-1');
+    const station2 = queryByTestId('accordionItem-2');
+    const station3 = queryByTestId('accordionItem-3');
 
     // perform assertions
     expect(station1).not.toBeInTheDocument();
@@ -78,9 +78,9 @@ describe('RadioStations', () => {
     });
 
     // get elements
-    const station1 = await findByTestId('station-1');
-    const station2 = await findByTestId('station-2');
-    const station3 = await findByTestId('station-3');
+    const station1 = await findByTestId('accordionItem-1');
+    const station2 = await findByTestId('accordionItem-2');
+    const station3 = await findByTestId('accordionItem-3');
 
     // perform assertions
     expect(station1).toBeInTheDocument();
@@ -106,12 +106,12 @@ describe('RadioStations', () => {
     });
 
     // get elements
-    const station1 = await findByTestId('station-1');
-    const station2 = await findByTestId('station-2');
-    const station3 = await findByTestId('station-3');
-    const station4 = await findByTestId('station-4');
-    const station5 = await findByTestId('station-5');
-    const station6 = await findByTestId('station-6');
+    const station1 = await findByTestId('accordionItem-1');
+    const station2 = await findByTestId('accordionItem-2');
+    const station3 = await findByTestId('accordionItem-3');
+    const station4 = await findByTestId('accordionItem-4');
+    const station5 = await findByTestId('accordionItem-5');
+    const station6 = await findByTestId('accordionItem-6');
 
     // perform assertions
     expect(station1).toBeInTheDocument();
@@ -138,7 +138,7 @@ describe('RadioStations', () => {
     const accordionItem = await findByTestId('accordionItem-1');
     const accordionItemPanel = await findByTestId('accordionItemPanel');
     const selectedStation = await findByTestId('selectedStation');
-    const accordionItemBtn = await findByTestId('accordionItemBtn-1');
+    const accordionItemBtn = await findByTestId('accordionBtn-1');
     const frequency = await findByTestId('frequency');
 
     // perform assertions

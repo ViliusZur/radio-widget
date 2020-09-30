@@ -31,16 +31,16 @@ const Radio: React.FC<Props> = ({ stations }) => {
     <div>
       <div data-testid="titleBar" className={styles.TitleContainer}>
         <div className={styles.Items}>
-          <IconButton src={backArrow} alt="back-arrow" />
+          <IconButton testid="back-arrow" src={backArrow} alt="back-arrow" />
           stations
-          <IconButton src={switchButton} alt="switch" />
+          <IconButton testid="switch" src={switchButton} alt="switch" />
         </div>
       </div>
       <Stations stations={stations} onChange={selectStation} />
       <div data-testid="currentlyPlaying" className={styles.CurrentlyPlaying}>
-        {selectedStation && (
+        {selectedStation && selectedStation.name && (
           <div data-testid="currentlyPlayingText" className={styles.currentlyPlaying}>
-            currently playing <span>{selectedStation.name}</span>
+            <span>currently playing</span> {selectedStation.name}
           </div>
         )}
       </div>

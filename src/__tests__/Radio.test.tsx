@@ -19,7 +19,6 @@ function renderRadio(props: Partial<Props> = {}) {
 }
 
 describe('Radio', () => {
-  //test
   test('all main elements and components render', async () => {
     // render the component
     const { findByTestId } = renderRadio();
@@ -35,8 +34,22 @@ describe('Radio', () => {
     expect(currentlyPlaying).toBeInTheDocument();
   });
 
-  //test
-  test(' renders stations', async () => {
+  test('title bar is rendered correctly', async () => {
+    // render the component
+    const { findByTestId } = renderRadio();
+
+    // get elements
+    const titleBar = await findByTestId('titleBar');
+    const backArrow = await findByTestId('back-arrow');
+    const switchOff = await findByTestId('switch');
+
+    // perform assertions
+    expect(backArrow).toBeInTheDocument();
+    expect(switchOff).toBeInTheDocument();
+    expect(titleBar).toHaveTextContent('stations');
+  });
+
+  test('renders 4 stations', async () => {
     // render the component
     const { findByTestId } = renderRadio({
       stations: [
@@ -48,21 +61,33 @@ describe('Radio', () => {
     });
 
     // get elements
-    const radioStations = await findByTestId('radioStations');
-    const station1 = await findByTestId('station-1');
-    const station2 = await findByTestId('station-2');
-    const station3 = await findByTestId('station-3');
-    const station4 = await findByTestId('station-4');
+    const stations = await findByTestId('stations');
+    const station1 = await findByTestId('accordionItem-1');
+    const station2 = await findByTestId('accordionItem-2');
+    const station3 = await findByTestId('accordionItem-3');
+    const station4 = await findByTestId('accordionItem-4');
 
     // perform assertions
-    expect(radioStations).toBeInTheDocument();
-    expect(radioStations).toContainElement(station1);
-    expect(radioStations).toContainElement(station2);
-    expect(radioStations).toContainElement(station3);
-    expect(radioStations).toContainElement(station4);
+    expect(stations).toBeInTheDocument();
+    expect(stations).toContainElement(station1);
+    expect(stations).toContainElement(station2);
+    expect(stations).toContainElement(station3);
+    expect(stations).toContainElement(station4);
   });
 
-  //test
+  test('currently playing shows nothing if no station is selected', async () => {
+    // render the component
+    const { findByTestId, queryByTestId } = renderRadio();
+
+    // get elements
+    const currentlyPlaying = await findByTestId('currentlyPlaying');
+    const currentlyPlayingText = queryByTestId('currentlyPlayingText');
+
+    // perform assertions
+    expect(currentlyPlaying).not.toHaveTextContent('currently playing');
+    expect(currentlyPlayingText).not.toBeInTheDocument();
+  });
+
   test('currently playing appears when selected a station', async () => {
     // render the component
     const { findByTestId } = renderRadio({
@@ -70,16 +95,15 @@ describe('Radio', () => {
     });
 
     // get elements
-    const station = await findByTestId('accordionItemBtn-1');
+    const station = await findByTestId('accordionBtn-1');
     fireEvent.click(station); // perform an event
-    const currentlyPlayingStationName = await findByTestId('stationName');
+    const currentlyPlayingStationName = await findByTestId('currentlyPlayingText');
 
     // perform assertions
     expect(currentlyPlayingStationName).toBeInTheDocument();
-    expect(currentlyPlayingStationName).toHaveTextContent('station1');
+    expect(currentlyPlayingStationName).toHaveTextContent('currently playing station1');
   });
 
-  //test
   test('currently playing changes when changing a station', async () => {
     // render the component
     const { findByTestId } = renderRadio({
@@ -90,21 +114,21 @@ describe('Radio', () => {
     });
 
     // get elements
-    let station = await findByTestId('accordionItemBtn-1');
+    let station = await findByTestId('accordionBtn-1');
     fireEvent.click(station); // perform an event
-    let currentlyPlayingStationName = await findByTestId('stationName');
+    const currentlyPlayingStationName = await findByTestId('currentlyPlayingText');
 
     // perform assertions
     expect(currentlyPlayingStationName).toBeInTheDocument();
-    expect(currentlyPlayingStationName).toHaveTextContent('station1');
+    expect(currentlyPlayingStationName).toHaveTextContent('currently playing station1');
 
     // get elements
-    station = await findByTestId('accordionItemBtn-2');
+    station = await findByTestId('accordionBtn-2');
     fireEvent.click(station); // perform an event
 
     // perform assertions
     expect(currentlyPlayingStationName).toBeInTheDocument();
-    expect(currentlyPlayingStationName).toHaveTextContent('station2');
+    expect(currentlyPlayingStationName).toHaveTextContent('currently playing station2');
   });
 
   // test
@@ -115,7 +139,7 @@ describe('Radio', () => {
     });
 
     // get elements
-    const station = await findByTestId('accordionItemBtn-1');
+    const station = await findByTestId('accordionBtn-1');
 
     // perform assertion
     expect(station).toHaveAttribute('aria-expanded', 'false');
@@ -129,10 +153,29 @@ describe('Radio', () => {
     });
 
     // get elements
-    const station = await findByTestId('accordionItemBtn-1');
+    const station = await findByTestId('accordionBtn-1');
     fireEvent.click(station); // perform an event
 
     // perform assertion
     expect(station).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  test('minus, plus buttons, and station image is displayed when station is passed as a prop and selected', async () => {
+    // render the component
+    const { findByTestId } = renderRadio({
+      stations: [{ key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' }],
+    });
+
+    // get elements
+    const station = await findByTestId('accordionBtn-1');
+    fireEvent.click(station); // perform an event
+    const minus = await findByTestId('minus');
+    const stationImage = await findByTestId('stationImage');
+    const plus = await findByTestId('plus');
+
+    // perform assertions
+    expect(minus).toBeInTheDocument();
+    expect(stationImage).toBeInTheDocument();
+    expect(plus).toBeInTheDocument();
   });
 });
