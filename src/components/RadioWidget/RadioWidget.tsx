@@ -14,10 +14,10 @@ interface Station {
   coverImage: string;
 }
 interface PropsType {
-  stations: Station[] | null;
+  stations?: Station[];
 }
 interface StateType {
-  selectedStation: Station | null;
+  selectedStation?: Station;
 }
 
 // radio widget is the main component, it holds the state of the widget.
@@ -27,7 +27,7 @@ export default class RadioWidget extends React.Component<PropsType, StateType> {
   }
 
   state: StateType = {
-    selectedStation: null,
+    selectedStation: undefined,
   };
 
   selectStation = (keyArr: string[]) => {

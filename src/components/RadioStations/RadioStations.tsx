@@ -6,15 +6,14 @@ import styles from './radioStations.module.scss';
 import DisplayStation from './DisplayStation/DisplayStation';
 
 // interfaces
+interface Station {
+  key: number;
+  name: string;
+  frequency: number;
+  coverImage: string;
+}
 interface Props {
-  stations:
-    | {
-        key: number;
-        name: string;
-        frequency: number;
-        coverImage: string;
-      }[]
-    | null;
+  stations?: Station[];
   onChange: (e: string[]) => void;
 }
 
@@ -22,6 +21,7 @@ interface Props {
 // name of the Accordion package "react-accessible-accordion"
 const RadioStations: React.FC<Props> = ({ stations, onChange }) => {
   if (stations) {
+    // display stations
     return (
       <div data-testid="radioStations" className={styles.Container}>
         <div data-testid="stationsContainer" className={styles.StationsContainer}>
@@ -34,6 +34,7 @@ const RadioStations: React.FC<Props> = ({ stations, onChange }) => {
       </div>
     );
   } else {
+    // display only the container if no stations are passed as props
     return <div data-testid="radioStations" className={styles.Container} />;
   }
 };

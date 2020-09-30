@@ -9,12 +9,12 @@ interface Station {
   coverImage: string;
 }
 interface Props {
-  station: Station | null;
+  station?: Station;
 }
 
 // render helper function to handle props overriding
 function renderSelectedStation(props: Partial<Props> = {}) {
-  const defaultProps: Props = { station: null };
+  const defaultProps: Props = { station: undefined };
   return render(<SelectedStation {...defaultProps} {...props} />);
 }
 

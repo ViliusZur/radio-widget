@@ -11,13 +11,13 @@ interface Station {
   coverImage: string;
 }
 interface Props {
-  stations: Station[] | null;
+  stations?: Station[];
   onChange: (e: string[]) => void;
 }
 
 // render helper function to handle props overriding
 function renderRadioStations(props: Partial<Props> = {}) {
-  const defaultProps: Props = { stations: null, onChange() {} }; // set default props
+  const defaultProps: Props = { stations: undefined, onChange() {} }; // set default props
   return render(<RadioStations {...defaultProps} {...props} />);
 }
 
@@ -142,10 +142,10 @@ describe('RadioStations', () => {
     });
 
     // get elements
-    const accordionItem = await findByTestId('accordionItem');
+    const accordionItem = await findByTestId('accordionItem-1');
     const accordionItemPanel = await findByTestId('accordionItemPanel');
     const selectedStation = await findByTestId('selectedStation');
-    const accordionItemBtn = await findByTestId('accordionItemBtn');
+    const accordionItemBtn = await findByTestId('accordionItemBtn-1');
     const frequency = await findByTestId('frequency');
 
     // perform assertions

@@ -8,12 +8,12 @@ interface Station {
   name: string;
 }
 interface Props {
-  station: Station | null;
+  station?: Station;
 }
 
 // render helper function to handle props overriding
 function renderCurrentlyPlaying(props: Partial<Props> = {}) {
-  const defaultProps: Props = { station: null }; // set default props
+  const defaultProps: Props = { station: undefined }; // set default props
   return render(<CurrentlyPlaying {...defaultProps} {...props} />);
 }
 

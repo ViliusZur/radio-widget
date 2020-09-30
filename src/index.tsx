@@ -22,7 +22,7 @@ let stations: Station[] = [...data.stations];
 ReactDOM.render(
   <React.StrictMode>
     <div className="Centered">
-      <RadioWidget stations={stations} />
+      <RadioWidget stations={undefined} />
     </div>
   </React.StrictMode>,
   document.getElementById('root')

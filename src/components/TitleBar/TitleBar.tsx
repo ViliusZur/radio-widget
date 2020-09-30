@@ -7,7 +7,6 @@ import switchButton from '../../assets/icons/switch.webp';
 
 // this component displays the orange top bar with buttons and "stations" text
 // it is a static component
-
 const TopBar: React.FC = () => (
   <div data-testid="titleBar" className={styles.Container}>
     <div data-testid="items" className={styles.Items}>

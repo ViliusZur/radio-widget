@@ -7,12 +7,13 @@ import plus from '../../../assets/icons/plus.webp';
 
 // interfaces
 interface Props {
-  station: { name: string; coverImage: string } | null;
+  station?: { name: string; coverImage: string };
 }
 
 // displays buttons and an image for an expanded selected station
 const SelectedStation: React.FC<Props> = ({ station }) => {
   if (station) {
+    // display selected station
     return (
       <div data-testid="selectedStation" className={styles.Container}>
         <div data-testid="items" className={styles.Items}>
@@ -32,6 +33,7 @@ const SelectedStation: React.FC<Props> = ({ station }) => {
       </div>
     );
   } else {
+    // don't display if no station is passed as prop
     return <></>;
   }
 };

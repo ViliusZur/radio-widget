@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, waitForElement } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import RadioWidget from '../components/RadioWidget/RadioWidget';
 
@@ -11,12 +11,12 @@ interface Station {
   coverImage: string;
 }
 interface Props {
-  stations: Station[] | null;
+  stations?: Station[];
 }
 
 // render helper function to handle props overriding
 function renderRadioWidget(props: Partial<Props> = {}) {
-  const defaultProps: Props = { stations: null };
+  const defaultProps: Props = { stations: undefined };
   return render(<RadioWidget {...defaultProps} {...props} />);
 }
 
@@ -67,23 +67,76 @@ describe('RadioWidget', () => {
   });
 
   //test
-  /*test('currently playing appears when selected a station', async () => {
+  test('currently playing appears when selected a station', async () => {
     // render the component
     const { findByTestId } = renderRadioWidget({
       stations: [{ key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' }],
     });
 
     // get elements
-    const station1 = await findByTestId('accordionItem');
-    // perform an event
-    fireEvent.click(station1);
-
+    const station = await findByTestId('accordionItemBtn-1');
+    fireEvent.click(station); // perform an event
     const currentlyPlayingStationName = await findByTestId('stationName');
+
     // perform assertions
     expect(currentlyPlayingStationName).toBeInTheDocument();
     expect(currentlyPlayingStationName).toHaveTextContent('station1');
-  });*/
+  });
 
   //test
-  // test('currently playing changes when changing a station');
+  test('currently playing changes when changing a station', async () => {
+    // render the component
+    const { findByTestId } = renderRadioWidget({
+      stations: [
+        { key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' },
+        { key: 2, name: 'station2', frequency: 2, coverImage: 'pathToImage' },
+      ],
+    });
+
+    // get elements
+    let station = await findByTestId('accordionItemBtn-1');
+    fireEvent.click(station); // perform an event
+    let currentlyPlayingStationName = await findByTestId('stationName');
+
+    // perform assertions
+    expect(currentlyPlayingStationName).toBeInTheDocument();
+    expect(currentlyPlayingStationName).toHaveTextContent('station1');
+
+    // get elements
+    station = await findByTestId('accordionItemBtn-2');
+    fireEvent.click(station); // perform an event
+
+    // perform assertions
+    expect(currentlyPlayingStationName).toBeInTheDocument();
+    expect(currentlyPlayingStationName).toHaveTextContent('station2');
+  });
+
+  // test
+  test('station should not be expanded when not selected', async () => {
+    // render the component
+    const { findByTestId } = renderRadioWidget({
+      stations: [{ key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' }],
+    });
+
+    // get elements
+    const station = await findByTestId('accordionItemBtn-1');
+
+    // perform assertion
+    expect(station).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  // test
+  test('station should be expanded when selected', async () => {
+    // render the component
+    const { findByTestId } = renderRadioWidget({
+      stations: [{ key: 1, name: 'station1', frequency: 1, coverImage: 'pathToImage' }],
+    });
+
+    // get elements
+    const station = await findByTestId('accordionItemBtn-1');
+    fireEvent.click(station); // perform an event
+
+    // perform assertion
+    expect(station).toHaveAttribute('aria-expanded', 'true');
+  });
 });
